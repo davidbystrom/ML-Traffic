@@ -13,5 +13,5 @@ while step < 1000:
     step += 1
     time.sleep(1)
     print(traci.junction.getContextSubscriptionResults("J4"))
-
+print("Done")
 traci.close()
