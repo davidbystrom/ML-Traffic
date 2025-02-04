@@ -13,5 +13,10 @@ while step < 1000:
     step += 1
     time.sleep(1)
     print(traci.junction.getContextSubscriptionResults("J4"))
-print("Done")
+    subscription_results = traci.junction.getContextSubscriptionResults("J4")
+    if subscription_results:
+        for vehicle_id, variables in subscription_results.items():
+            waiting_time = variables[tc.VAR_WAITING_TIME]
+            print(f"Vehicle {vehicle_id} waiting time: {waiting_time}")
+            
 traci.close()

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2025-02-04 13:31:26 by Eclipse SUMO netedit Version 1.21.0
+<neteditConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/neteditConfiguration.xsd">
+
+    <input>
+        <sumocfg-file value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.sumocfg"/>
+        <additional-files value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.add.xml"/>
+        <route-files value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.rou.xml"/>
+        <data-files value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.dat.xml"/>
+        <sumo-net-file value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\David\Documents\GitHub\ML-Traffic\Rakljus\Rakljus.net.xml"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="0"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.50"/>
+        <rectangular-lane-cut value="0"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="0"/>
+    </pedestrian>
+
+</neteditConfiguration>
+-->
+
+<net version="1.20" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="0.00,0.00" convBoundary="-46.36,8.22,63.14,9.24" origBoundary="-10000000000.00,-10000000000.00,10000000000.00,10000000000.00" projParameter="!"/>
+
+    <edge id=":J1_0" function="internal">
+        <lane id=":J1_0_0" index="0" speed="13.89" length="0.30" shape="6.20,6.96 6.49,6.96"/>
+    </edge>
+
+    <edge id="E0" from="J0" to="J1" priority="-1">
+        <lane id="E0_0" index="0" speed="13.89" length="52.58" shape="-46.38,7.64 6.20,6.96"/>
+    </edge>
+    <edge id="E1" from="J1" to="J2" priority="-1">
+        <lane id="E1_0" index="0" speed="13.89" length="56.64" shape="6.49,6.96 63.13,6.62"/>
+    </edge>
+
+    <tlLogic id="J1" type="static" programID="0" offset="0">
+        <phase duration="5"  state="r"/>
+    </tlLogic>
+
+    <junction id="J0" type="dead_end" x="-46.36" y="9.24" incLanes="" intLanes="" shape="-46.36,9.24 -46.40,6.04"/>
+    <junction id="J1" type="traffic_light" x="6.36" y="8.56" incLanes="E0_0" intLanes=":J1_0_0" shape="6.50,8.56 6.48,5.36 6.18,5.36 6.22,8.56">
+        <request index="0" response="0" foes="0" cont="0"/>
+    </junction>
+    <junction id="J2" type="dead_end" x="63.14" y="8.22" incLanes="E1_0" intLanes="" shape="63.12,5.02 63.14,8.22"/>
+
+    <connection from="E0" to="E1" fromLane="0" toLane="0" via=":J1_0_0" tl="J1" linkIndex="0" dir="s" state="O"/>
+
+    <connection from=":J1_0" to="E1" fromLane="0" toLane="0" dir="s" state="M"/>
+
+</net>
