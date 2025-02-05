@@ -3,5 +3,5 @@ from TrafficEnv import TrafficEnv
 
 env = TrafficEnv()
 model = DQN("MlpPolicy", env, verbose=1)
-model.learn(total_timesteps=10000)
+model.learn(total_timesteps=10000000)
 model.save("traffic_light_model")

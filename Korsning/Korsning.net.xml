@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-02-04 16:01:47 by Eclipse SUMO netedit Version 1.21.0
+<!-- generated on 2025-02-05 10:40:47 by Eclipse SUMO netedit Version 1.21.0
 <neteditConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/neteditConfiguration.xsd">
 
     <input>
@@ -79,7 +79,7 @@
     </edge>
 
     <tlLogic id="J4" type="static" programID="0" offset="0">
-        <phase duration="3"  state="rrrrrr"/>
+        <phase duration="3"  state="GGGGGG"/>
     </tlLogic>
 
     <junction id="J3" type="dead_end" x="-64.13" y="9.60" incLanes="-E2_0" intLanes="" shape="-64.13,9.60 -64.12,12.80 -64.13,9.60"/>
@@ -90,6 +90,7 @@
         <request index="3" response="100011" foes="100011" cont="0"/>
         <request index="4" response="000000" foes="000010" cont="0"/>
         <request index="5" response="000000" foes="001110" cont="0"/>
+        <param key="jmIgnoreJunctionFoeProb" value="1"/>
     </junction>
     <junction id="J5" type="dead_end" x="7.40" y="-58.47" incLanes="E3_0" intLanes="" shape="7.40,-58.47 4.20,-58.43 7.40,-58.47"/>
     <junction id="J6" type="dead_end" x="94.34" y="9.25" incLanes="E4_0" intLanes="" shape="94.34,9.25 94.34,6.05 94.34,9.25"/>

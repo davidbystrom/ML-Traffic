@@ -9,13 +9,17 @@ class TrafficEnv(gym.Env):
     def __init__(self):
         super(TrafficEnv, self).__init__()
         self.action_space = spaces.Discrete(729)  # Example: 0 = red, 1 = green
-        self.observation_space = spaces.Box(low=0, high=100, shape=(1,), dtype=np.float32)
+        self.observation_space = spaces.Box(low=0, high=100, shape=(4,), dtype=np.float32)
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)  # Ensure compatibility with Gym's reset()
+        try:
+            traci.close()
+        except:
+            pass
         traci.start(["sumo-gui", "-c", "Korsning.sumocfg", "--start"])
         traci.junction.subscribeContext("J4", tc.CMD_GET_VEHICLE_VARIABLE, 42, [tc.VAR_SPEED, tc.VAR_WAITING_TIME])
-        initial_observation = np.array([0], dtype=np.float32)
+        initial_observation = np.array([0, 0, 0, 0], dtype=np.float32)
         return initial_observation, {}
 
     def step(self, action):
@@ -43,8 +47,19 @@ class TrafficEnv(gym.Env):
                 # print(f"Vehicle {vehicle_id} waiting time: {waiting_time}")
         reward = -waiting_times - traci.simulation.getEmergencyStoppingVehiclesNumber() * 100 - traci.simulation.getCollidingVehiclesNumber() * 1000
         
-        obs = np.array([waiting_times], dtype=np.float32)
-        done = traci.simulation.getMinExpectedNumber() == 0
+        # Observation: Vehicles on edges
+        e4 = traci.edge.getLastStepVehicleNumber("-E4")
+        e3 = traci.edge.getLastStepVehicleNumber("-E3")
+        e2 = traci.edge.getLastStepVehicleNumber("E2")
+        
+        obs = np.array([waiting_times, e4, e3, e2], dtype=np.float32)
+        done = False
+        # done = traci.simulation.getMinExpectedNumber() == 0
+        if traci.simulation.getMinExpectedNumber() == 0:
+            # Restart
+            traci.close()
+            obs, _ = self.reset()
+            done = True
         return obs, reward, done, False, {}
 
     def close(self):

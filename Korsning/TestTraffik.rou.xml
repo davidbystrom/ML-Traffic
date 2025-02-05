@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-02-04 16:01:59.287387 by randomTrips.py v1_21_0+0000-d7b3b481c43
+<!-- generated on 2025-02-05 10:58:47.348163 by randomTrips.py v1_21_0+0000-d7b3b481c43
 <configuration>
     <net-file value="C:\Users\David\Documents\GitHub\ML-Traffic\Korsning\Korsning.net.xml"/>
     <output-trip-file value="C:\Users\David\Documents\GitHub\ML-Traffic\Korsning\TestTraffik.rou.xml"/>
     <validate value="True"/>
-    <end value="100010.0"/>
+    <end value="100100.0"/>
 </configuration>
 -->
 
-<!-- generated on 2025-02-04 16:01:58 by Eclipse SUMO duarouter Version 1.21.0
+<!-- generated on 2025-02-05 10:58:46 by Eclipse SUMO duarouter Version 1.21.0
 <duarouterConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
@@ -25,7 +25,7 @@
 
     <time>
         <begin value="0"/>
-        <end value="100010.0"/>
+        <end value="100100.0"/>
     </time>
 
     <report>
@@ -66757,4 +66757,64 @@
     <trip id="100007" depart="100007.00" from="-E4" to="-E2"/>
     <trip id="100008" depart="100008.00" from="E2" to="E4"/>
     <trip id="100009" depart="100009.00" from="-E4" to="-E2"/>
+    <trip id="100010" depart="100010.00" from="-E4" to="-E2"/>
+    <trip id="100012" depart="100012.00" from="E2" to="E3"/>
+    <trip id="100013" depart="100013.00" from="-E3" to="E4"/>
+    <trip id="100014" depart="100014.00" from="E2" to="E3"/>
+    <trip id="100015" depart="100015.00" from="E2" to="E3"/>
+    <trip id="100018" depart="100018.00" from="E2" to="E3"/>
+    <trip id="100019" depart="100019.00" from="E2" to="E3"/>
+    <trip id="100020" depart="100020.00" from="-E4" to="-E2"/>
+    <trip id="100023" depart="100023.00" from="E2" to="E4"/>
+    <trip id="100025" depart="100025.00" from="E2" to="E4"/>
+    <trip id="100026" depart="100026.00" from="E2" to="E4"/>
+    <trip id="100028" depart="100028.00" from="-E4" to="E3"/>
+    <trip id="100033" depart="100033.00" from="E2" to="E3"/>
+    <trip id="100036" depart="100036.00" from="-E4" to="-E2"/>
+    <trip id="100037" depart="100037.00" from="E2" to="E4"/>
+    <trip id="100038" depart="100038.00" from="-E4" to="E3"/>
+    <trip id="100039" depart="100039.00" from="-E4" to="-E2"/>
+    <trip id="100041" depart="100041.00" from="-E3" to="-E2"/>
+    <trip id="100043" depart="100043.00" from="E2" to="E3"/>
+    <trip id="100044" depart="100044.00" from="-E4" to="E3"/>
+    <trip id="100045" depart="100045.00" from="-E3" to="E4"/>
+    <trip id="100046" depart="100046.00" from="-E3" to="-E2"/>
+    <trip id="100047" depart="100047.00" from="-E3" to="-E2"/>
+    <trip id="100048" depart="100048.00" from="-E3" to="E4"/>
+    <trip id="100049" depart="100049.00" from="-E4" to="E3"/>
+    <trip id="100050" depart="100050.00" from="-E4" to="-E2"/>
+    <trip id="100051" depart="100051.00" from="-E4" to="-E2"/>
+    <trip id="100053" depart="100053.00" from="E2" to="E4"/>
+    <trip id="100054" depart="100054.00" from="E2" to="E3"/>
+    <trip id="100057" depart="100057.00" from="-E3" to="-E2"/>
+    <trip id="100058" depart="100058.00" from="E2" to="E4"/>
+    <trip id="100059" depart="100059.00" from="E2" to="E3"/>
+    <trip id="100060" depart="100060.00" from="-E3" to="E4"/>
+    <trip id="100062" depart="100062.00" from="-E4" to="E3"/>
+    <trip id="100063" depart="100063.00" from="-E3" to="E4"/>
+    <trip id="100067" depart="100067.00" from="-E4" to="E3"/>
+    <trip id="100068" depart="100068.00" from="-E3" to="E4"/>
+    <trip id="100070" depart="100070.00" from="E2" to="E3"/>
+    <trip id="100071" depart="100071.00" from="-E4" to="-E2"/>
+    <trip id="100072" depart="100072.00" from="E2" to="E4"/>
+    <trip id="100073" depart="100073.00" from="E2" to="E3"/>
+    <trip id="100074" depart="100074.00" from="E2" to="E4"/>
+    <trip id="100075" depart="100075.00" from="E2" to="E3"/>
+    <trip id="100077" depart="100077.00" from="-E3" to="E4"/>
+    <trip id="100079" depart="100079.00" from="E2" to="E3"/>
+    <trip id="100080" depart="100080.00" from="-E4" to="-E2"/>
+    <trip id="100081" depart="100081.00" from="E2" to="E4"/>
+    <trip id="100082" depart="100082.00" from="-E3" to="-E2"/>
+    <trip id="100083" depart="100083.00" from="-E4" to="E3"/>
+    <trip id="100085" depart="100085.00" from="E2" to="E3"/>
+    <trip id="100086" depart="100086.00" from="-E3" to="E4"/>
+    <trip id="100088" depart="100088.00" from="E2" to="E4"/>
+    <trip id="100089" depart="100089.00" from="-E3" to="-E2"/>
+    <trip id="100090" depart="100090.00" from="E2" to="E3"/>
+    <trip id="100091" depart="100091.00" from="-E4" to="-E2"/>
+    <trip id="100092" depart="100092.00" from="-E4" to="E3"/>
+    <trip id="100096" depart="100096.00" from="-E3" to="-E2"/>
+    <trip id="100097" depart="100097.00" from="E2" to="E4"/>
+    <trip id="100098" depart="100098.00" from="-E4" to="E3"/>
+    <trip id="100099" depart="100099.00" from="E2" to="E4"/>
 </routes>
