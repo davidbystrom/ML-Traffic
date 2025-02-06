@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2025-02-05 16:10:49.487768 by randomTrips.py v1_21_0+0000-d7b3b481c43
+<!-- generated on 2025-02-06 14:56:04.135845 by randomTrips.py v1_21_0+0000-d7b3b481c43
 <configuration>
     <net-file value="Korsning.net.xml"/>
     <additional-files value="Korsning.rou.xml"/>
@@ -11,7 +11,7 @@
 </configuration>
 -->
 
-<!-- generated on 2025-02-05 16:10:49 by Eclipse SUMO duarouter Version 1.21.0
+<!-- generated on 2025-02-06 14:56:04 by Eclipse SUMO duarouter Version 1.21.0
 <duarouterConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
 
     <input>
