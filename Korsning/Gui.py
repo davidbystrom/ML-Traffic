@@ -8,8 +8,8 @@ import time
 class TrafficEnv(gym.Env):
     def __init__(self):
         super(TrafficEnv, self).__init__()
-        self.action_space = spaces.Discrete(64)  # Example: 0 = red, 1 = green
-        self.observation_space = spaces.Box(low=0, high=100, shape=(4,), dtype=np.float32)
+        self.action_space = spaces.Discrete(5)  # Example: 0 = red, 1 = green
+        self.observation_space = spaces.Box(low=0, high=100, shape=(5,), dtype=np.float32)
 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)  # Ensure compatibility with Gym's reset()
@@ -19,7 +19,7 @@ class TrafficEnv(gym.Env):
             pass
         traci.start(["sumo-gui", "-c", "Korsning.sumocfg", "--start"])
         traci.junction.subscribeContext("J4", tc.CMD_GET_VEHICLE_VARIABLE, 42, [tc.VAR_SPEED, tc.VAR_WAITING_TIME])
-        initial_observation = np.array([0, 0, 0, 0], dtype=np.float32)
+        initial_observation = np.array([0, 0, 0, 0, 0], dtype=np.float32)
         return initial_observation, {}
 
     def step(self, action):
@@ -30,7 +30,9 @@ class TrafficEnv(gym.Env):
         #     traci.trafficlight.setRedYellowGreenState("J4", "y")
         # else:
         #     traci.trafficlight.setRedYellowGreenState("J4", "r")
-        array = ['GGGGGG', 'GGGGGr', 'GGGGrG', 'GGGGrr', 'GGGrGG', 'GGGrGr', 'GGGrrG', 'GGGrrr', 'GGrGGG', 'GGrGGr', 'GGrGrG', 'GGrGrr', 'GGrrGG', 'GGrrGr', 'GGrrrG', 'GGrrrr', 'GrGGGG', 'GrGGGr', 'GrGGrG', 'GrGGrr', 'GrGrGG', 'GrGrGr', 'GrGrrG', 'GrGrrr', 'GrrGGG', 'GrrGGr', 'GrrGrG', 'GrrGrr', 'GrrrGG', 'GrrrGr', 'GrrrrG', 'Grrrrr', 'rGGGGG', 'rGGGGr', 'rGGGrG', 'rGGGrr', 'rGGrGG', 'rGGrGr', 'rGGrrG', 'rGGrrr', 'rGrGGG', 'rGrGGr', 'rGrGrG', 'rGrGrr', 'rGrrGG', 'rGrrGr', 'rGrrrG', 'rGrrrr', 'rrGGGG', 'rrGGGr', 'rrGGrG', 'rrGGrr', 'rrGrGG', 'rrGrGr', 'rrGrrG', 'rrGrrr', 'rrrGGG', 'rrrGGr', 'rrrGrG', 'rrrGrr', 'rrrrGG', 'rrrrGr', 'rrrrrG', 'rrrrrr']
+        # array = ['GGGGGG', 'GGGGGr', 'GGGGrG', 'GGGGrr', 'GGGrGG', 'GGGrGr', 'GGGrrG', 'GGGrrr', 'GGrGGG', 'GGrGGr', 'GGrGrG', 'GGrGrr', 'GGrrGG', 'GGrrGr', 'GGrrrG', 'GGrrrr', 'GrGGGG', 'GrGGGr', 'GrGGrG', 'GrGGrr', 'GrGrGG', 'GrGrGr', 'GrGrrG', 'GrGrrr', 'GrrGGG', 'GrrGGr', 'GrrGrG', 'GrrGrr', 'GrrrGG', 'GrrrGr', 'GrrrrG', 'Grrrrr', 'rGGGGG', 'rGGGGr', 'rGGGrG', 'rGGGrr', 'rGGrGG', 'rGGrGr', 'rGGrrG', 'rGGrrr', 'rGrGGG', 'rGrGGr', 'rGrGrG', 'rGrGrr', 'rGrrGG', 'rGrrGr', 'rGrrrG', 'rGrrrr', 'rrGGGG', 'rrGGGr', 'rrGGrG', 'rrGGrr', 'rrGrGG', 'rrGrGr', 'rrGrrG', 'rrGrrr', 'rrrGGG', 'rrrGGr', 'rrrGrG', 'rrrGrr', 'rrrrGG', 'rrrrGr', 'rrrrrG', 'rrrrrr']
+        array =  [ "rrrrrr", "GrGrGr", "GrrrGG", "GGGrrr", "rrGGGr"]
+
         traci.trafficlight.setRedYellowGreenState("J4", array[action])
 
         traci.simulationStep()
@@ -46,14 +48,14 @@ class TrafficEnv(gym.Env):
                 waiting_time = variables[tc.VAR_WAITING_TIME]
                 waiting_times += waiting_time
                 # print(f"Vehicle {vehicle_id} waiting time: {waiting_time}")
-        reward = - diff  - waiting_time*2 - traci.simulation.getEmergencyStoppingVehiclesNumber() * 50 - traci.simulation.getCollidingVehiclesNumber() * 2500
+        reward = - diff - waiting_times * 2 - traci.simulation.getEmergencyStoppingVehiclesNumber() * 50 - traci.simulation.getCollidingVehiclesNumber() * 2500
         
         # Observation: Vehicles on edges
         e4 = traci.edge.getLastStepVehicleNumber("-E4")
         e3 = traci.edge.getLastStepVehicleNumber("-E3")
         e2 = traci.edge.getLastStepVehicleNumber("E2")
         
-        obs = np.array([waiting_times, e4, e3, e2], dtype=np.float32)
+        obs = np.array([waiting_times, e4, e3, e2, action], dtype=np.float32)
         done = False
         # done = traci.simulation.getMinExpectedNumber() == 0
         if traci.simulation.getMinExpectedNumber() == 0:
